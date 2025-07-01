@@ -3,10 +3,10 @@ import { v4 as uuidv4 } from 'uuid';
 import {action} from "./_generated/server";
 import { v } from "convex/values";
 import bcrypt from "bcryptjs";
-import type { Action } from "convex/server";
+
 import {internal, api} from "./_generated/api";
 
-export const registerUser: Action = action({
+export const registerUser = action({
     args: {
         name: v.string(),
         email: v.string(),
@@ -47,7 +47,7 @@ export const registerUser: Action = action({
     },
 });
 
-export const login: Action = action({
+export const login = action({
     args: {
         email: v.string(),
         password: v.string(),
