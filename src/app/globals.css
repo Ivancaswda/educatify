@@ -1,0 +1,218 @@
+
+@import "tw-animate-css";
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#animate-grow {
+    animation: grow-anim 4s ease-in-out infinite;
+}
+@keyframes grow-anim {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.1;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+#animate-grow-tinier {
+    animation: grow-anim-t 4s ease-in-out infinite;
+}
+@keyframes grow-anim-t {
+    0% {
+        scale: 0.97;
+    }
+
+    50% {
+        scale: 1.04;
+    }
+
+    100% {
+        scale: 0.97;
+    }
+}
+
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 0 0% 3.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 3.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 3.9%;
+        --primary: 0 72.2% 50.6%;
+        --primary-foreground: 0 85.7% 97.3%;
+        --secondary: 0 0% 96.1%;
+        --secondary-foreground: 0 0% 9%;
+        --muted: 0 0% 96.1%;
+        --muted-foreground: 0 0% 45.1%;
+        --accent: 0 0% 96.1%;
+        --accent-foreground: 0 0% 9%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 0 0% 89.8%;
+        --input: 0 0% 89.8%;
+        --ring: 0 72.2% 50.6%;
+        --radius: 0.5rem;
+        --chart-1: 12 76% 61%;
+        --chart-2: 173 58% 39%;
+        --chart-3: 197 37% 24%;
+        --chart-4: 43 74% 66%;
+        --chart-5: 27 87% 67%;
+    }
+
+    .dark {
+        --background: 0 0% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 0 0% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --popover: 0 0% 3.9%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 0 72.2% 50.6%;
+        --primary-foreground: 0 85.7% 97.3%;
+        --secondary: 0 0% 14.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 0 0% 14.9%;
+        --muted-foreground: 0 0% 63.9%;
+        --accent: 0 0% 14.9%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 0 0% 14.9%;
+        --input: 0 0% 14.9%;
+        --ring: 0 72.2% 50.6%;
+        --chart-1: 220 70% 50%;
+        --chart-2: 160 60% 45%;
+        --chart-3: 30 80% 55%;
+        --chart-4: 280 65% 60%;
+        --chart-5: 340 75% 55%;
+    }
+
+
+
+
+
+
+@keyframes scanline {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+/* TODO: EXPLAIN THIS BC U PROMISED JUST IN THE FIRST SECTION */
+@keyframes slow-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-scanline {
+    animation: scanline 8s linear infinite;
+}
+
+.animate-slow-spin {
+    animation: slow-spin 12s linear infinite;
+}
+
+@keyframes sound-wave {
+    0% {
+        height: 10%;
+    }
+    50% {
+        height: 100%;
+    }
+    100% {
+        height: 10%;
+    }
+}
+
+.animate-sound-wave {
+    animation: sound-wave 1.2s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.str-chat__channel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #280101;
+    height: 100%;
+}
+.str-chat__container {
+    max-width: 1200px;
+    width: 100%;
+    height: 80%;
+    margin: 70px auto;
+    padding: 30px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px black;
+    overflow: hidden;
+
+}
+.str-chat__list {
+    background: #ffffff;
+    padding: 12px;
+}
+
+.str-chat__message-input {
+    border-top: 1px solid #ddd;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.imagedd {
+    position: relative;
+    background-image: url("https://cdn.pixabay.com/photo/2015/01/08/18/11/laptops-593296_1280.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;  /* Высота экрана */
+
+}
+#inject {
+    background: rgba(0, 0, 0, 0.86);
+
+    position: absolute;
+
+}
+
+#image-container {
+    position: relative;
+    display: inline-block;
+}
+.imagedd {
+
+}
+
+
+
