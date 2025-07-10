@@ -164,7 +164,7 @@ const LessonRoom = ({id}) => {
                                                                     <AvatarImage src={participant?.image} />
                                                                     <AvatarFallback>{participant?.name.charAt(0).toUpperCase()}</AvatarFallback>
                                                                 </Avatar>
-                                                                <span className='text-white'>{participant?.name || "Неизвестный"}</span>
+                                                                <span >{participant?.name || "Неизвестный"}</span>
                                                             </div>
                                                         </div>
                                                     );
