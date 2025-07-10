@@ -100,7 +100,7 @@ const LessonRoom = ({id}) => {
 
                     <div className="absolute bottom-8 left-0 right-0 ">
                         <div className="flex flex-col items-center gap-4 ">
-                            <div className="flex items-center gap-2 flex-wrap justify-center px-4 ">
+                            <div className="flex flex-col sm:flex-row items-center gap-2 flex-wrap justify-center px-4 overflow-x-auto">
                                 <CallControls onLeave={() => router.push("/")}/>
 
                                 <div className="flex items-center flex-col md:flex-row  gap-2">
@@ -175,6 +175,7 @@ const LessonRoom = ({id}) => {
                                                 <Button variant="outline" onClick={() => setShowPresenceModal(false)}>
                                                     Отмена
                                                 </Button>
+
                                                 <Button
                                                     onClick={async () => {
                                                         try {
