@@ -77,16 +77,16 @@ export default function BlogPage() {
             setLoading(false);
             return toast.error("Ошибка загрузки изображения");
         }
-
+        setLoading(false);
         await createPost({
             title,
             excerpt,
             content,
             image: data.secure_url,
-            authorId: me.userId,
+            authorId: me?.userId,
         });
 
-        setLoading(false);
+
         toast.success("Пост создан!");
         // очистить
         setIsOpen(false)

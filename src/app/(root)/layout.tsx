@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import { StreamChatProvider } from "@/providers/StreamProvider";
 import { useEffect, useState } from "react";
 import LoaderUI from "@/components/LoaderUI";
-import { useRouter } from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import { useAuth } from "@/providers/authContext";
 import {jwtDecode} from "jwt-decode";
 import {api} from "../../../convex/_generated/api";
@@ -13,7 +13,7 @@ import {useQuery} from "convex/react";
 
 function Layout({ children }: { children: React.ReactNode }) {
     const { token, isLoading, user } = useAuth();
-
+    const pathname = usePathname()
     const router = useRouter();
     const [streamToken, setStreamToken] = useState<string | null>(null);
 
@@ -64,10 +64,14 @@ function Layout({ children }: { children: React.ReactNode }) {
         fetchStreamToken();
     }, [token]);
 
+
     if (!token) return;
-    if (isLoading || !token || !streamToken) {
-        return <LoaderUI />;
+    if (pathname !== '/blog') {
+        if (isLoading || !token || !streamToken ) {
+            return <LoaderUI />;
+        }
     }
+
     const decoded: any = jwtDecode(token)
 
     const chatUser = {
