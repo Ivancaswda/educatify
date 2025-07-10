@@ -22,10 +22,10 @@ function Layout({ children }: { children: React.ReactNode }) {
 
 
     useEffect(() => {
-        if (!isLoading && !user) {
+        if (!isLoading && !user && !token) {
             router.replace("/sign-in");
         }
-    }, [user, isLoading, router]);
+    }, [user, isLoading, router, token]);
 
 
 
@@ -71,7 +71,9 @@ function Layout({ children }: { children: React.ReactNode }) {
             return <LoaderUI />;
         }
     }
-
+    if (!token || isLoading || (token && !user)) {
+        return <LoaderUI />;
+    }
     const decoded: any = jwtDecode(token)
 
     const chatUser = {
