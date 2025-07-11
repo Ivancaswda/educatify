@@ -89,7 +89,7 @@ const ProfilePage = () => {
         setDisplayedLessons(myLessons);
     }, [me, lessons]);
 
-    const lessonsToShow = displayedLessons.slice(-3);
+    const lessonsToShow = displayedLessons.slice(3);
     const [showAllMarks, setShowAllMarks] = useState(false);
     const allMarks = useQuery(api.comments.getAllComments) ?? [];
     const [displayedMarks, setDisplayedMarks] = useState([])
