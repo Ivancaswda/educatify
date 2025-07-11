@@ -46,7 +46,9 @@ export default function SignUpForm() {
                 headers: { "Content-Type": "application/json" },
             }).then((res) => res.json()).then(res => res.token);
 
-            localStorage.setItem("token", token); // если используете хранилище вручную
+
+            setLogin(token); // <-- вот это добавь
+
             router.push("/");
         } catch (err: any) {
             setError(err.message || "Ошибка регистрации");

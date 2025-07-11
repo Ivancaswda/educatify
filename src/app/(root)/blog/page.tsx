@@ -52,9 +52,7 @@ export default function BlogPage() {
     const [loading, setLoading] = useState<boolean>(false)
 
 
-    if (!user?.user_id) {
-        return <LoaderUI />
-    }
+
 
 
 

@@ -7,6 +7,7 @@ import {
   UserIcon,
   ZapIcon,
   List,
+  XCircleIcon,
   ArrowBigLeftDashIcon,
   ArrowBigRightDashIcon
 } from "lucide-react";
@@ -148,8 +149,9 @@ const Navbar = () => {
         </div>}
 
 
-        <List size={31} onClick={() => setSidebarVis(!sidebarVis)}
-              className='absolute md:hidden cursor-pointer z-20 right-12'/>
+
+        {sidebarVis ? <XCircleIcon onClick={() => setSidebarVis(false)} size={31} className='absolute md:hidden cursor-pointer z-20 right-10' /> : <List size={31} onClick={() => setSidebarVis(!sidebarVis)}
+                                                                                                          className='absolute md:hidden cursor-pointer z-20 right-10'/>}
 
         <nav
             className={`

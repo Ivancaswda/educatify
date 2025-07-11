@@ -4,19 +4,22 @@ import {v} from 'convex/values'
 export const getStatsForUser = query({
     args: {clerkId: v.optional(v.string())},
     handler: async (ctx, {clerkId}) => {
+        console.log(clerkId)
         const user = await ctx.db
-            .query('users')
-            .withIndex('by_user_id', (q) => q.eq('userId', clerkId))
+            .query("users")
+            .withIndex("by_user_id")
+            .filter((q) => q.eq(q.field("userId"), clerkId))
             .first();
-        if (!user) throw new Error('User not found');
+        console.log(user)
 
-        if (user.role === 'mentor') {
+
+        if (user?.role === 'mentor') {
             const allLessons = await ctx.db.query('lessons').collect();
 
             const myLessons = allLessons.filter((lesson) =>
-                lesson.mentorIds.includes(user._id)
+                lesson.mentorIds.includes(user._id ?? user.userId) || lesson.mentorIds.includes(user.userId)
             );
-
+            console.log(myLessons)
             const totalStudents = new Set<string>();
 
             myLessons.forEach((lesson) => {
@@ -45,7 +48,7 @@ export const getStatsForUser = query({
             const allLessons = await ctx.db.query('lessons').collect();
 
             const myLessons = allLessons.filter((lesson) =>
-                lesson.studentIds.includes(user._id)
+                lesson.studentIds.includes(user._id) || lesson.studentIds.includes(user.userId)
             );
 
             const MyLessonsByLastWeek = myLessons.filter((lesson) =>

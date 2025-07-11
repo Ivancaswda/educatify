@@ -85,7 +85,20 @@ const UserPrograms = () => {
 
   console.log(me)
 
-  const stats = useQuery(api.stats.getStatsForUser, { clerkId: me?.userId});
+  useEffect(() => {
+    if (!me || lessons.length === 0) return;
+
+    const myLessons = lessons.filter((lesson) =>
+        lesson.studentIds.includes(me._id) || lesson.mentorIds.includes(me._id)
+    );
+
+    setDisplayedLessons(myLessons);
+  }, [me, lessons]);
+  const stats = useQuery(api.stats.getStatsForUser, { clerkId: me?.userId });
+  console.log(stats)
+
+
+  console.log(me?.userId)
   const data = [stats];
 
   const handleQuickAction = (title: string) => {
@@ -110,23 +123,15 @@ const UserPrograms = () => {
 
 
 
-  useEffect(() => {
-    if (!me || lessons.length === 0) return;
-
-    const myLessons = lessons.filter((lesson) =>
-        lesson.studentIds.includes(me._id) || lesson.mentorIds.includes(me._id)
-    );
 
 
 
 
-    setDisplayedLessons(myLessons);
-  }, [me, lessons]);
 
 
 
   const rusStats = [
-    { 'Посещенные уроки всего': stats?.lessonsAttended, 'За неделю':stats?.lessonsAttended, 'Средний балл': stats?.averageRating}
+    { 'Уроков посещено': stats?.lessonsAttended, 'За неделю':stats?.lessonsAttended, 'Средний балл': stats?.averageRating}
   ]
 
   const [reviewText, setReviewText] = useState<string>()
@@ -554,7 +559,7 @@ const UserPrograms = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
 
-                {students.map((student) => {
+                {students.slice(0, 6).map((student) => {
 
                   if (student.userId === me.userId) return null
 
@@ -738,7 +743,7 @@ const UserPrograms = () => {
                     <YAxis/>
                     <Tooltip/>
                     <Legend/>
-                    <Bar dataKey="Посещенные уроки всего" fill="#970101"/>
+                    <Bar dataKey="Уроков посещено" fill="#970101"/>
                     <Bar dataKey="За неделю" fill="#ff0000"/>
                     <Bar dataKey="Средний балл" fill="#ff5d5d"/>
                   </BarChart>

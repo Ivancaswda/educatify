@@ -65,15 +65,13 @@ function Layout({ children }: { children: React.ReactNode }) {
     }, [token]);
 
 
-    if (!token) return;
-    if (pathname !== '/blog') {
+
+
         if (isLoading || !token || !streamToken ) {
             return <LoaderUI />;
         }
-    }
-    if (!token || isLoading || (token && !user)) {
-        return <LoaderUI />;
-    }
+
+
     const decoded: any = jwtDecode(token)
 
     const chatUser = {

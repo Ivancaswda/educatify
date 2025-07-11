@@ -36,7 +36,7 @@ function LessonSetup({ onSetupComplete }: { onSetupComplete: () => void }) {
                 <div className=" gap-6  ">
                     {/* VIDEO PREVIEW CONTAINER */}
 
-                    <Card className="md:col-span-1 hidden sm:flex p-6  flex-col absolute w-[40%] top-24">
+                    <Card className="md:col-span-1 hidden md:flex p-6  flex-col absolute w-[40%] top-24">
                         <div>
                             <h1 className="text-xl font-semibold mb-1 text-yellow-500">Вид видеокамеры</h1>
                             <p className="text-sm text-muted-foreground">Убедись что выглядишь хорошо!</p>

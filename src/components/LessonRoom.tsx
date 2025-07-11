@@ -81,7 +81,7 @@ const LessonRoom = ({id}) => {
     return (
         <div className="h-[calc(100vh-4rem-1px)] overflow-auto">
             <ResizablePanelGroup direction="horizontal">
-                <ResizablePanel defaultSize={35} minSize={25} maxSize={100} className="relative">
+                <ResizablePanel defaultSize={35} minSize={35} maxSize={100} className="relative">
                     {/* VIDEO LAYOUT */}
                     <div className="absolute inset-0">
                         {layout === "grid" ? <PaginatedGridLayout/> : <SpeakerLayout/>}
@@ -100,11 +100,16 @@ const LessonRoom = ({id}) => {
 
                     <div className="absolute bottom-8 left-0 right-0 ">
                         <div className="flex flex-col items-center gap-4 ">
-                            <div className="flex flex-col sm:flex-row items-center gap-2 flex-wrap justify-center px-4 overflow-x-auto">
+                            <div
+                                className="flex flex-col w-full sm:flex-row items-center gap-2 flex-wrap justify-center px-4 overflow-x-auto">
+                                <div className="flex flex-wrap justify-center gap-2 overflow-x-auto max-w-full px-2">
+
+
                                 <CallControls onLeave={() => router.push("/")}/>
+                                </div>
 
                                 <div className="flex items-center flex-col md:flex-row  gap-2">
-                                    <DropdownMenu >
+                                    <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
                                             <Button variant="outline" size="icon" className="size-10">
                                                 <LayoutListIcon className="size-4"/>
@@ -129,8 +134,8 @@ const LessonRoom = ({id}) => {
                                         <UsersIcon className="size-4"/>
                                     </Button>
                                     {me?.role === 'mentor' && <Button
-                                                           className=""
-                                                           onClick={() => setShowPresenceModal(true)}
+                                        className=""
+                                        onClick={() => setShowPresenceModal(true)}
                                     >
                                         Отметить студентов
                                     </Button>}
@@ -161,10 +166,10 @@ const LessonRoom = ({id}) => {
                                                             />
                                                             <div className='flex items-center gap-3'>
                                                                 <Avatar className='flex items-center justify-center'>
-                                                                    <AvatarImage src={participant?.image} />
+                                                                    <AvatarImage src={participant?.image}/>
                                                                     <AvatarFallback>{participant?.name.charAt(0).toUpperCase()}</AvatarFallback>
                                                                 </Avatar>
-                                                                <span >{participant?.name || "Неизвестный"}</span>
+                                                                <span>{participant?.name || "Неизвестный"}</span>
                                                             </div>
                                                         </div>
                                                     );
